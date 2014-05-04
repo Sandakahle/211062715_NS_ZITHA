@@ -27,43 +27,43 @@ import org.testng.annotations.Test;
  * @author hashcode
  */
 public class TotalNumberTest {
-        public static ApplicationContext ctx;
-    
-
-    private TotalPeopleService service;
-    private PersonRepository personRepository;
-    
-    public TotalNumberTest() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-     @Test
-     public void total() {
-         service = ctx.getBean(TotalPeopleService.class);
-         List<Person> people = service.getTotalPeople();
-         
-         Assert.assertEquals( people.size(),0, " Expert no People");
-     
-     }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-         ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @BeforeMethod
-    public void setUpMethod() throws Exception {
-    }
-
-    @AfterMethod
-    public void tearDownMethod() throws Exception {
-        personRepository = ctx.getBean(PersonRepository.class);
-        personRepository.deleteAll();
-    }
+//        public static ApplicationContext ctx;
+//    
+//
+//    private TotalPeopleService service;
+//    private PersonRepository personRepository;
+//    
+//    public TotalNumberTest() {
+//    }
+//
+//    // TODO add test methods here.
+//    // The methods must be annotated with annotation @Test. For example:
+//    //
+//     @Test
+//     public void total() {
+//         service = ctx.getBean(TotalPeopleService.class);
+//         List<Person> people = service.getTotalPeople();
+//         
+//         Assert.assertEquals( people.size(),0, " Expert no People");
+//     
+//     }
+//
+//    @BeforeClass
+//    public static void setUpClass() throws Exception {
+//         ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+//    }
+//
+//    @AfterClass
+//    public static void tearDownClass() throws Exception {
+//    }
+//
+//    @BeforeMethod
+//    public void setUpMethod() throws Exception {
+//    }
+//
+//    @AfterMethod
+//    public void tearDownMethod() throws Exception {
+//        personRepository = ctx.getBean(PersonRepository.class);
+//        personRepository.deleteAll();
+//    }
 }

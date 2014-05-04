@@ -34,7 +34,7 @@ public class CustomerRepositoryTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
+     @Test(enabled = false)
      public void hello() {
          repo = ctx.getBean(CustomerRepository.class);
          Customer cust = new Customer();
