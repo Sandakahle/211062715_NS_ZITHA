@@ -31,6 +31,7 @@ public class TotalNumberTest {
     
 
     private TotalPeopleService service;
+    private PersonRepository personRepository;
     
     public TotalNumberTest() {
     }
@@ -43,7 +44,7 @@ public class TotalNumberTest {
          service = ctx.getBean(TotalPeopleService.class);
          List<Person> people = service.getTotalPeople();
          
-         Assert.assertEquals(0, people.size(), " Expert no People");
+         Assert.assertEquals( people.size(),0, " Expert no People");
      
      }
 
@@ -62,5 +63,7 @@ public class TotalNumberTest {
 
     @AfterMethod
     public void tearDownMethod() throws Exception {
+        personRepository = ctx.getBean(PersonRepository.class);
+        personRepository.deleteAll();
     }
 }
