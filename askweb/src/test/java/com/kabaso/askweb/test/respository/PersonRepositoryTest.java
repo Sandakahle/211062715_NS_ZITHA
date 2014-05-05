@@ -9,6 +9,7 @@ package com.kabaso.askweb.test.respository;
 import com.kabaso.askweb.app.conf.ConnectionConfig;
 import com.kabaso.askweb.domain.Person;
 import com.kabaso.askweb.respository.PersonRepository;
+import com.kabaso.askweb.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -88,7 +89,7 @@ public class PersonRepositoryTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
 		
     }
 

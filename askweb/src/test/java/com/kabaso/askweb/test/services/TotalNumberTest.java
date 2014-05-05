@@ -10,7 +10,7 @@ package com.kabaso.askweb.test.services;
 import com.kabaso.askweb.domain.Person;
 import com.kabaso.askweb.respository.PersonRepository;
 import com.kabaso.askweb.services.TotalPeopleService;
-import com.kabaso.askweb.test.ConnectionConfig;
+import com.kabaso.askweb.test.ConnectionConfigTest;
 import static com.kabaso.askweb.test.respository.PersonRepositoryTest.ctx;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
@@ -52,7 +52,7 @@ public class TotalNumberTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-         ctx = new AnnotationConfigApplicationContext(ConnectionConfig.class);
+         ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
     @AfterClass

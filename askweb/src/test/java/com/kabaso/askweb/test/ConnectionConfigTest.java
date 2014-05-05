@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan(basePackageClasses = Application.class, excludeFilters = @ComponentScan.Filter({Controller.class, Configuration.class}))
 @EnableJpaRepositories(basePackages = "com.kabaso.askweb.respository")
-public class ConnectionConfig {
+public class ConnectionConfigTest {
 
     @Bean
     public DataSource dataSource() {
