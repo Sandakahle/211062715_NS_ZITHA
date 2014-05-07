@@ -71,6 +71,12 @@ public class Account implements Serializable {
         return name;
     }
 
+    public BigDecimal getBalance() {
+        return balance;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;

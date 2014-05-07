@@ -6,7 +6,9 @@
 
 package com.kabaso.askweb.presentation;
 
+import com.kabaso.askweb.domain.Person;
 import com.kabaso.askweb.services.PeopleAgeService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +26,9 @@ public class CputController {
     @RequestMapping(value = "cput",method = RequestMethod.GET)
     public String getHome(){
         
-        System.out.println(" The CPUT COntroller was hit");
+        List<Person> persons = ageService.getAgeAbove(3);
+        
+        System.out.println(" The CPUT COntroller was hit" +persons.size());
         
         return "cput";
     }

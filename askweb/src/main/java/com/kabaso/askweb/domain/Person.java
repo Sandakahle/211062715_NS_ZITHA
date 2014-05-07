@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,10 +36,10 @@ public class Person implements Serializable {
     private String email;
     @Embedded
     private Contact contact;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "person_id")
     List<Account> accounts;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "person_id")
     List<Club> clubs;
 
@@ -126,6 +127,7 @@ public class Person implements Serializable {
     }
 
     public List<Account> getAccounts() {
+        
         return accounts;
     }
 
