@@ -6,7 +6,6 @@
 
 package com.kabaso.askweb.test.respository;
 
-import com.kabaso.askweb.app.conf.ConnectionConfig;
 import com.kabaso.askweb.domain.Person;
 import com.kabaso.askweb.respository.PersonRepository;
 import com.kabaso.askweb.test.ConnectionConfigTest;
@@ -36,7 +35,7 @@ public class PersonRepositoryTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test (enabled = false)
+     @Test (enabled = true)
      public void createPerson() {
          repo = ctx.getBean(PersonRepository.class);
          Person p = new Person.Builder("kabasob@cput.ac.za")
@@ -50,7 +49,7 @@ public class PersonRepositoryTest {
      
      }
      
-     @Test(dependsOnMethods = "createPerson", enabled = false)
+     @Test(dependsOnMethods = "createPerson", enabled = true)
      public void readPerson(){
          repo = ctx.getBean(PersonRepository.class);
          Person person = repo.findOne(id);
@@ -58,7 +57,7 @@ public class PersonRepositoryTest {
          
      }
      
-    @Test(dependsOnMethods = "readPerson", enabled = false)
+    @Test(dependsOnMethods = "readPerson", enabled = true)
      private void updatePerson(){
          repo = ctx.getBean(PersonRepository.class);
          Person person = repo.findOne(id);
@@ -74,7 +73,7 @@ public class PersonRepositoryTest {
          
      }
      
-     @Test(dependsOnMethods = "updatePerson",enabled = false)
+     @Test(dependsOnMethods = "updatePerson",enabled = true)
      private void deletePerson(){
          repo = ctx.getBean(PersonRepository.class);
          Person person = repo.findOne(id);

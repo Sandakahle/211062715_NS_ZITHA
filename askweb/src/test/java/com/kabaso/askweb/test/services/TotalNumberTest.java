@@ -15,7 +15,6 @@ import com.kabaso.askweb.test.ConnectionConfigTest;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Hibernate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -55,7 +54,7 @@ public class TotalNumberTest {
 
     }
 
-    @Test(dependsOnMethods = "testClub")
+    @Test(dependsOnMethods = "testClub",enabled = true)
     private void createPerson() {
         clubRepository = ctx.getBean(ClubRepository.class);
         personRepository = ctx.getBean(PersonRepository.class);
@@ -71,7 +70,7 @@ public class TotalNumberTest {
 
         List<Club> clubs = clubRepository.findAll();
 
-        Person person = new Person.Builder("test@test.com")
+        Person person = new Person.Builder("test2@test.com")
                 .accounts(accounts)
                 .age(20)
                 .clubs(clubs)
@@ -85,7 +84,7 @@ public class TotalNumberTest {
         Assert.assertNotNull(person);
     }
 
-    @Test(dependsOnMethods = "createPerson")
+    @Test(dependsOnMethods = "createPerson",enabled = true)
     private void readAccounts() {
         personRepository = ctx.getBean(PersonRepository.class);
          Person person = personRepository.findOne(id);
@@ -98,11 +97,10 @@ public class TotalNumberTest {
         }
     }
 
-    @Test(dependsOnMethods = "readAccounts")
+    @Test(dependsOnMethods = "readAccounts",enabled = true)
     private void readClubs() {
         personRepository = ctx.getBean(PersonRepository.class);
         Person person = personRepository.findOne(id);
-         Hibernate.initialize(person.getClubs());
         List<Club> clubs = person.getClubs();
         for (Club club : clubs) {
             System.out.println("The Club name is " + club.getName());
@@ -111,7 +109,7 @@ public class TotalNumberTest {
 
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void total() {
         service = ctx.getBean(TotalPeopleService.class);
         List<Person> people = service.getTotalPeople();
