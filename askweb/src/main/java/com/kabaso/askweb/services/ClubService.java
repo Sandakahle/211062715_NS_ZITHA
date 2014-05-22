@@ -15,5 +15,6 @@ import com.kabaso.askweb.domain.Club;
 public interface ClubService extends Services<Club, Long>{
     public Club getClubByName(String name);
     public int getNumberOfClubs();
+    public int numberOfPeopleInaClub(String clubName);
     
 }

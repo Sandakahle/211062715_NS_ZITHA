@@ -16,17 +16,18 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+import org.testng.annotations.Test;
 
 /**
  *
  * @author hashcode
  */
-public class RestController {
+public class PersonRestControllerTest {
     private RestTemplate restTemplate;
     private final static String URL = "http://localhost:8084/askweb/";
     
     
-    
+    @Test
     public void tesCreate(){
         Person p =null;
         HttpEntity<Person> requestEntity = new HttpEntity<Person>(p, getContentType());

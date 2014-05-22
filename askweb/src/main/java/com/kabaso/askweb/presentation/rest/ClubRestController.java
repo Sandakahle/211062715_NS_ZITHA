@@ -30,23 +30,26 @@ public class ClubRestController {
     @RequestMapping(value = "create",method = RequestMethod.POST) // This the uri e.g http://localhost:8084/askweb/api/club/create
     @ResponseBody //Converts output or response to JSON String
     public String create(@RequestBody Club club) { // @RequestBody for converting incoming JSON call to Object
+        clubService.persist(club);
+        
         System.out.println(" Create the Called ");
-        return "";
+        return "Club Created";
     }
 
     @RequestMapping(value = "update",method = RequestMethod.PUT) //This the uri e.g http://localhost:8084/askweb/api/club/update
     @ResponseBody
     public String update(@RequestBody Club club) {
+        clubService.merge(club);
         System.out.println(" Update Called ");
-        return "";
+        return "Club Update";
     }
 
-    @RequestMapping(value = "club/{id}",method = RequestMethod.GET) //http://localhost:8084/askweb/api/club/"1234"
+    @RequestMapping(value = "club/{id}",method = RequestMethod.GET) //http://localhost:8084/askweb/api/club/1234
     @ResponseBody
-    public Club getClub(@PathVariable String id) { //@PathVariable used to bind the id value
+    public Club getClub(@PathVariable Long id) { //@PathVariable used to bind the id value
         
         System.out.println(" ID called ");
-        return null;
+        return clubService.find(id);
     }
 
     @RequestMapping(value = "clubs",method = RequestMethod.GET) // Always Put HTTP Method
