@@ -6,6 +6,7 @@
 
 package com.kabaso.askweb.test.restapi;
 
+import com.kabaso.askweb.domain.Club;
 import com.kabaso.askweb.domain.Person;
 import java.util.Collections;
 import org.springframework.http.HttpEntity;
@@ -22,9 +23,15 @@ import org.springframework.web.client.RestTemplate;
  */
 public class RestController {
     private RestTemplate restTemplate;
+    private final static String URL = "http://localhost:8084/askweb/";
     
     
-    
+    public void testPost(){
+        
+        Club club2 = new Club.Builder("Chess").build();
+        restTemplate.postForLocation(URL+"createclub", HttpMethod.POST, Club.class);
+        
+    }
     
     
     public void testRead(){
@@ -32,9 +39,11 @@ public class RestController {
         ResponseEntity<Person[]> responseEntity = restTemplate.exchange("URL",HttpMethod.GET,requestEntity, Person[].class);
         
         Person [] people = responseEntity.getBody();
+        for (Person person : people) {
+            
+            
+        }
        
-        
-        
     }
     
     private HttpEntity<?> getHttpEntity(){

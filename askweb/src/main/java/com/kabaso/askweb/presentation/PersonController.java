@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.kabaso.askweb.presentation;
 
 import com.kabaso.askweb.domain.Person;
@@ -21,28 +20,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class PersonController {
+
     @Autowired
     private PeopleAgeService personService;
-    @RequestMapping(value="person")
+
+    @Autowired
+    private PersonService personServices;
+
+    @RequestMapping(value = "person")
     @ResponseBody
-    public Person getPerson(){
+    public Person getPerson() {
         Person p = null;
         List<Person> persons = personService.findAll();
-        
-        System.out.println(" THE COllection Size"+persons.size());
-        
-        if (persons.size()>0) {
+
+        System.out.println(" THE COllection Size" + persons.size());
+
+        if (persons.size() > 0) {
             p = persons.get(0);
-            
+
         }
-        
+
         return p;
     }
-     @RequestMapping(value="persons")
+
+    @RequestMapping(value = "persons")
     @ResponseBody
-    public List<Person> getPersons(){
-       return personService.findAll();
-        
-        
+    public List<Person> getPersons() {
+        return personService.findAll();
+
     }
 }
