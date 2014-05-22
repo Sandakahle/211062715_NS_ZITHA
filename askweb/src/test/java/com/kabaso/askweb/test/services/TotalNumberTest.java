@@ -43,7 +43,7 @@ public class TotalNumberTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    @Test
+    @Test(enabled = false)
     public void testClub() {
         clubRepository = ctx.getBean(ClubRepository.class);
         Club club1 = new Club.Builder("Football").build();
@@ -54,7 +54,7 @@ public class TotalNumberTest {
 
     }
 
-    @Test(dependsOnMethods = "testClub",enabled = true)
+    @Test(dependsOnMethods = "testClub",enabled = false)
     private void createPerson() {
         clubRepository = ctx.getBean(ClubRepository.class);
         personRepository = ctx.getBean(PersonRepository.class);
@@ -84,7 +84,7 @@ public class TotalNumberTest {
         Assert.assertNotNull(person);
     }
 
-    @Test(dependsOnMethods = "createPerson",enabled = true)
+    @Test(dependsOnMethods = "createPerson",enabled = false)
     private void readAccounts() {
         personRepository = ctx.getBean(PersonRepository.class);
          Person person = personRepository.findOne(id);
@@ -97,7 +97,7 @@ public class TotalNumberTest {
         }
     }
 
-    @Test(dependsOnMethods = "readAccounts",enabled = true)
+    @Test(dependsOnMethods = "readAccounts",enabled = false)
     private void readClubs() {
         personRepository = ctx.getBean(PersonRepository.class);
         Person person = personRepository.findOne(id);
@@ -109,7 +109,7 @@ public class TotalNumberTest {
 
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void total() {
         service = ctx.getBean(TotalPeopleService.class);
         List<Person> people = service.getTotalPeople();

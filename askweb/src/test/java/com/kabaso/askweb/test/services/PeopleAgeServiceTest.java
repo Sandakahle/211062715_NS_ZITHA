@@ -37,7 +37,7 @@ public class PeopleAgeServiceTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    @Test
+    @Test(enabled = false)
     public void getAgeofPeple() {
         personRepository = ctx.getBean(PersonRepository.class);
         peopleAgeService = ctx.getBean(PeopleAgeService.class);
