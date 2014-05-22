@@ -30,9 +30,10 @@ public class PersonRestControllerTest {
     @Test
     public void tesCreate(){
         Person p =null;
-        HttpEntity<Person> requestEntity = new HttpEntity<Person>(p, getContentType());
+        HttpEntity<Person> requestEntity = new HttpEntity<>(p, getContentType());
 //        Make the HTTP POST request, marshaling the request to JSON, and the response to a String
-        ResponseEntity<String> responseEntity = restTemplate.exchange(URL+"api/person/create", HttpMethod.POST, requestEntity, String.class);
+        ResponseEntity<String> responseEntity = restTemplate.
+                exchange(URL+"api/person/create", HttpMethod.POST, requestEntity, String.class);
 
      
         

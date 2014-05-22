@@ -10,15 +10,16 @@ import com.kabaso.askweb.domain.Person;
 import com.kabaso.askweb.respository.ClubRepository;
 import com.kabaso.askweb.respository.PersonRepository;
 import com.kabaso.askweb.services.ClubService;
-import com.kabaso.askweb.services.PersonService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author hashcode
  */
+@Service
 public class ClubServiceImpl implements ClubService {
 
     @Autowired

@@ -44,7 +44,7 @@ public class ClubRestController {
         return "Club Update";
     }
 
-    @RequestMapping(value = "club/{id}",method = RequestMethod.GET) //http://localhost:8084/askweb/api/club/1234
+    @RequestMapping(value = "id/{id}",method = RequestMethod.GET) //http://localhost:8084/askweb/api/club/1234
     @ResponseBody
     public Club getClub(@PathVariable Long id) { //@PathVariable used to bind the id value
         
@@ -59,7 +59,7 @@ public class ClubRestController {
         return clubService.findAll();
     }
 
-    @RequestMapping(value = "club/{name}",method = RequestMethod.GET) //http://localhost:8084/askweb/api/club/football
+    @RequestMapping(value = "name/{name}",method = RequestMethod.GET) //http://localhost:8084/askweb/api/club/football
     @ResponseBody
     public Club getClubByName(@PathVariable String name) {
         Club club = clubService.getClubByName(name); // Call the Service;
