@@ -6,54 +6,63 @@
 package com.kabaso.askweb.presentation.rest;
 
 import com.kabaso.askweb.domain.Club;
+import com.kabaso.askweb.services.ClubService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
  * @author hashcode
  */
-@Controller
-@RequestMapping(value = "api/club")
+@Controller  // Annotation to make this class be detectable by the config as a controller
+@RequestMapping(value = "api/club") // This the url e.g http://localhost:8084/askweb/api/club
 public class ClubRestController {
+    @Autowired
+    private ClubService clubService;
     
 
-    @RequestMapping(value = "create")
-    @ResponseBody
-    public String create(@RequestBody Club club) {
+    @RequestMapping(value = "create",method = RequestMethod.POST) // This the uri e.g http://localhost:8084/askweb/api/club/create
+    @ResponseBody //Converts output or response to JSON String
+    public String create(@RequestBody Club club) { // @RequestBody for converting incoming JSON call to Object
         System.out.println(" Create the Called ");
         return "";
     }
 
-    @RequestMapping(value = "update")
+    @RequestMapping(value = "update",method = RequestMethod.PUT) //This the uri e.g http://localhost:8084/askweb/api/club/update
     @ResponseBody
     public String update(@RequestBody Club club) {
         System.out.println(" Update Called ");
         return "";
     }
 
-    @RequestMapping(value = "club/{id}")
+    @RequestMapping(value = "club/{id}",method = RequestMethod.GET) //http://localhost:8084/askweb/api/club/"1234"
     @ResponseBody
-    public Club getClub(@PathVariable String id) {
+    public Club getClub(@PathVariable String id) { //@PathVariable used to bind the id value
+        
         System.out.println(" ID called ");
         return null;
     }
 
-    @RequestMapping(value = "clubs")
+    @RequestMapping(value = "clubs",method = RequestMethod.GET) // Always Put HTTP Method
     @ResponseBody
-    public List<Club> getClubs(Club club) {
+    public List<Club> getClubs() {
         System.out.println("The CLUBS");
-        return null;
+        return clubService.findAll();
     }
 
-    @RequestMapping(value = "club/{name}")
+    @RequestMapping(value = "club/{name}",method = RequestMethod.GET) //http://localhost:8084/askweb/api/club/football
     @ResponseBody
     public Club getClubByName(@PathVariable String name) {
-        System.out.println("The Club name");
+        Club club = clubService.getClubByName(name); // Call the Service;
+        if(club!=null){
+            return club;
+        }
         return null;
     }
 

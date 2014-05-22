@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.kabaso.askweb.services.Impl;
 
 import com.kabaso.askweb.domain.Club;
@@ -16,34 +15,57 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author hashcode
  */
-public class ClubServiceImpl implements ClubService{
+public class ClubServiceImpl implements ClubService {
+
     @Autowired
     private ClubRepository clubRepository;
-    
 
     @Override
     public Club find(Long id) {
-      return clubRepository.findOne(id);
+        return clubRepository.findOne(id);
     }
 
     @Override
     public Club persist(Club entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return clubRepository.save(entity); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Club merge(Club entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        if (entity.getId() != null) {
+            return clubRepository.save(entity);
+        }
+        return null;
     }
 
     @Override
     public void remove(Club entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        clubRepository.delete(entity); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public List<Club> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return clubRepository.findAll(); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public Club getClubByName(String name) {
+        List<Club> clubs = findAll();
+        Club foundClub = null;
+        for (Club club : clubs) {
+            if (club.getName().equalsIgnoreCase(name)) {
+                foundClub = club;
+            }
+        }
+        return foundClub;
+
+    }
+
+    @Override
+    public int getNumberOfClubs() {
+        List<Club> clubs = findAll();
+        return clubs.size();
+    }
+
 }

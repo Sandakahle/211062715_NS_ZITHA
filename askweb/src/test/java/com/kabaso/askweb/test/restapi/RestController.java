@@ -31,7 +31,7 @@ public class RestController {
         Person p =null;
         HttpEntity<Person> requestEntity = new HttpEntity<Person>(p, getContentType());
 //        Make the HTTP POST request, marshaling the request to JSON, and the response to a String
-        ResponseEntity<String> responseEntity = restTemplate.exchange("URL", HttpMethod.POST, requestEntity, String.class);
+        ResponseEntity<String> responseEntity = restTemplate.exchange(URL+"api/person/create", HttpMethod.POST, requestEntity, String.class);
 
      
         

@@ -13,5 +13,7 @@ import com.kabaso.askweb.domain.Club;
  * @author hashcode
  */
 public interface ClubService extends Services<Club, Long>{
+    public Club getClubByName(String name);
+    public int getNumberOfClubs();
     
 }
