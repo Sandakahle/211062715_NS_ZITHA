@@ -8,7 +8,10 @@ package com.kabaso.askweb.presentation.rest;
 import com.kabaso.askweb.domain.Club;
 import java.util.List;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -17,33 +20,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "api/club")
 public class ClubRestController {
+    
 
     @RequestMapping(value = "create")
-    public String create() {
+    @ResponseBody
+    public String create(@RequestBody Club club) {
         System.out.println(" Create the Called ");
         return "";
     }
 
     @RequestMapping(value = "update")
-    public String update() {
+    @ResponseBody
+    public String update(@RequestBody Club club) {
         System.out.println(" Update Called ");
         return "";
     }
 
     @RequestMapping(value = "club/{id}")
-    public Club getClub() {
+    @ResponseBody
+    public Club getClub(@PathVariable String id) {
         System.out.println(" ID called ");
         return null;
     }
 
     @RequestMapping(value = "clubs")
-    public List<Club> getClubs() {
+    @ResponseBody
+    public List<Club> getClubs(Club club) {
         System.out.println("The CLUBS");
         return null;
     }
 
     @RequestMapping(value = "club/{name}")
-    public Club getClubByName(String name) {
+    @ResponseBody
+    public Club getClubByName(@PathVariable String name) {
         System.out.println("The Club name");
         return null;
     }

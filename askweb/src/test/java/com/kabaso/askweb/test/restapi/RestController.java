@@ -25,6 +25,15 @@ public class RestController {
     
     
     
+    public void tesCreate(){
+        Person p =null;
+        HttpEntity<Person> requestEntity = new HttpEntity<Person>(p, getContentType());
+//        Make the HTTP POST request, marshaling the request to JSON, and the response to a String
+        ResponseEntity<String> responseEntity = restTemplate.exchange("URL", HttpMethod.POST, requestEntity, String.class);
+
+     
+        
+    }
     
     
     public void testRead(){
@@ -43,6 +52,13 @@ public class RestController {
         HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         return requestEntity;
+    }
+    
+    private HttpHeaders getContentType() {
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.setContentType(new MediaType("application", "json"));
+        return requestHeaders;
+
     }
     
 }

@@ -10,7 +10,10 @@ package com.kabaso.askweb.presentation.rest;
 import com.kabaso.askweb.domain.Person;
 import java.util.List;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -21,31 +24,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PersonRestController {
     
     @RequestMapping(value = "create")
-    public String create() {
+    @ResponseBody
+    public String create(@RequestBody Person person) {
         System.out.println(" Create the Called ");
         return "";
     }
 
     @RequestMapping(value = "update")
-    public String update() {
+    @ResponseBody
+    public String update(@RequestBody Person person) {
         System.out.println(" Update Called ");
         return "";
     }
 
     @RequestMapping(value = "club/{id}")
-    public Person getPerson() {
+    @ResponseBody
+    public Person getPerson(@PathVariable String id) {
         System.out.println(" ID called ");
         return null;
     }
 
     @RequestMapping(value = "clubs")
+    @ResponseBody
     public List<Person> getPersons() {
         System.out.println("The CLUBS");
         return null;
     }
 
     @RequestMapping(value = "club/{name}")
-    public Person getPersonyName(String name) {
+    @ResponseBody
+    public Person getPersonyName(@PathVariable String id) {
         System.out.println("The Club name");
         return null;
     }
